@@ -107,6 +107,16 @@ model Attachment {
   @@map("attachments")
 }
 
+model Registration {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  fullName  String   @map("full_name")
+  status    String   @default("pending")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("registrations")
+}
+
 model LessonProgress {
   id            String    @id @default(uuid()) @db.Uuid
   userId        String    @map("user_id") @db.Uuid
